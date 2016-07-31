@@ -1,30 +1,29 @@
 #include <iostream>
-#include <cmath>
-#include <array>
 #include <vector>
 #include "Solver.h"
+#include "Polynomial.h"
 
 using namespace std;
 
-int main() {
-    vector<vector<double>> f = {
+int main(int argc, char* argv[]) {
+    const vector<vector<double>> f = {
             {0, 0, 1},
             {0, 0, 2}
     };
 
-    vector<vector<double>> dx = {
-            {0, 2, 0},
-            {0, 4, 0}
+    const vector<vector<double>> dx = {
+            Polynomial::derivative(f[0]),
+            Polynomial::derivative(f[1]),
     };
 
-    vector<vector<double>> dxinv = {
+    const vector<vector<double>> dxinv = {
             {0, -1. / 2., 0},
             {0, -1. / 4., 0}
     };
 
-    vector<double> constraint = {1, 1, -10};
+    const vector<double> constraint = {1, 1, -10};
 
-    double epsilon = 0.0001;
+    const double epsilon = 0.000001;
 
     Solver solver;
     solver.solve(f, dx, dxinv, constraint, epsilon);

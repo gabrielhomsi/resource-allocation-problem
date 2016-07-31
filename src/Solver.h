@@ -8,13 +8,17 @@ using namespace std;
 
 class Solver {
 public:
-    void solve(vector<vector<double>> &f, vector<vector<double>> &dx,
-               vector<vector<double>> &dxinv, vector<double> &constraint, double epsilon);
+    void solve(const vector<vector<double>> &f, const vector<vector<double>> &dx,
+               const vector<vector<double>> &dxinv, const vector<double> &constraint, const double epsilon);
 
 private:
-    void binarySearch(double left, double right, vector<vector<double>> &f,
-                      vector<vector<double>> &dx,
-                      vector<vector<double>> &dxinv, vector<double> &constraint, double epsilon);
+    const vector<vector<double>> *f = nullptr;
+    const vector<vector<double>> *dx = nullptr;
+    const vector<vector<double>> *dxinv = nullptr;
+    const vector<double> *constraint = nullptr;
+    double epsilon;
+
+    void binarySearch(const double left, const double right);
 };
 
 

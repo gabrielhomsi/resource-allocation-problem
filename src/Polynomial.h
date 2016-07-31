@@ -4,9 +4,13 @@
 
 #include <vector>
 
+using namespace std;
+
 class Polynomial {
 public:
-    static double evaluate(double x, std::vector<double> coefficients);
+    static double evaluate(const double x, const vector<double> coefficients);
+
+    static vector<double> derivative(const vector<double> coefficients);
 };
 
 
